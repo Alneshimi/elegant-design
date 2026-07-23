@@ -1,0 +1,46 @@
+{
+  "home": "الرئيسية",
+  "products": "المنتجات",
+  "orderNow": "اطلب الآن",
+  "trackOrder": "تتبع الطلب",
+  "featuredProducts": "المنتجات المميزة",
+  "contact": "للتواصل",
+
+  "heroTitle": "إليجانت ديزاين البحرين",
+  "heroSubtitle": "أكريليك فاخر • هدايا مخصصة • تصاميم راقية",
+  "shopCollection": "مجموعة التسوق",
+
+  "startingFrom": "ابتداءً من",
+  "viewDetails": "عرض التفاصيل",
+  "ourProducts": "منتجاتنا",
+  "ourProductsDescription": "اكتشف تصاميمنا المخصصة الفاخرة.",
+  "noProducts": "لا توجد منتجات متاحة بعد.",
+
+  "requestOrder": "اطلب الآن",
+  "noImages": "لا توجد صور حتى الآن",
+  "videoNotSupported": "متصفحك لا يدعم تشغيل الفيديو.",
+
+  "customizeOrder": "تخصيص وطلب",
+  "fullName": "الاسم الكامل",
+  "phoneNumber": "رقم الهاتف",
+  "instagram": "اسم مستخدم إنستغرام",
+  "emailOptional": "البريد الإلكتروني (اختياري)",
+  "quantity": "الكمية",
+  "size": "المقاس",
+  "color": "اللون",
+  "designDescription": "اكتب تفاصيل التصميم الذي تريده...",
+  "submitRequest": "إرسال الطلب",
+
+ "trackYourOrder": "تتبع طلبك",
+  "orderNumber": "رقم الطلب",
+  "orderNumberPlaceholder": "ED-123456789",
+  "admin": "المسؤول",
+  "categories": "الأقسام",
+  "whyChooseUs": "لماذا تختارنا",
+"qualityTitle": "جودة عالية",
+"qualityDescription": "جميع منتجاتنا تُصنع بمواد عالية الجودة مع اهتمام بأدق التفاصيل.",
+"customTitle": "تصاميم مخصصة",
+"customDescription": "نصمم منتجات مخصصة تناسب ذوقك واحتياجاتك.",
+"deliveryTitle": "توصيل سريع",
+"deliveryDescription": "نجهز طلبك بسرعة ونوصله إليك بكل عناية."
+}

@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+:root{
+    --gold:#C8A24C;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#ffffff;
+    color:#111;
+    font-family:var(--font-poppins);
+}
+
+h1,h2,h3{
+    font-family:var(--font-playfair);
+}
+
+.gold{
+    color:var(--gold);
+}
+
+.gold-bg{
+    background:var(--gold);
+}

@@ -1,0 +1,47 @@
+{
+  "home": "Home",
+  "products": "Products",
+  "orderNow": "Order Now",
+  "trackOrder": "Track Order",
+  "featuredProducts": "Featured Products",
+  "contact": "Contact",
+
+  "heroTitle": "Elegant Design Bahrain",
+  "heroSubtitle": "Premium Acrylic • Custom Gifts • Luxury Designs",
+  "shopCollection": "Shop Collection",
+  
+  "startingFrom": "Starting from",
+  "viewDetails": "View Details",
+  
+ "ourProducts": "Our Products",
+  "ourProductsDescription": "Discover our premium custom designs.",
+  "noProducts": "No products available yet.",
+
+   "requestOrder": "Request Order",
+  "noImages": "No Images Yet",
+  "videoNotSupported": "Your browser does not support this video.",
+
+  "customizeOrder": "Customize & Order",
+  "fullName": "Full Name",
+  "phoneNumber": "Phone Number",
+  "instagram": "Instagram Username",
+  "emailOptional": "Email (Optional)",
+  "quantity": "Quantity",
+  "size": "Size",
+  "color": "Color",
+  "designDescription": "Describe your design...",
+  "submitRequest": "Submit Request",
+
+  "trackYourOrder": "Track Your Order",
+  "orderNumber": "Order Number",
+  "orderNumberPlaceholder": "ED-123456789",
+    "admin": "Admin",
+    "categories": "Categories",
+"whyChooseUs": "Why Choose Us",
+"qualityTitle": "Premium Quality",
+"qualityDescription": "Every product is crafted with high-quality materials and attention to detail.",
+"customTitle": "Custom Designs",
+"customDescription": "Personalized products made to match your style and requirements.",
+"deliveryTitle": "Fast Delivery",
+"deliveryDescription": "We prepare your order quickly and deliver it with care."
+}
