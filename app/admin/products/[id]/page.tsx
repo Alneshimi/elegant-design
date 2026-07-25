@@ -90,7 +90,7 @@ export default async function EditProductPage({
         <textarea
           name="descriptionEn"
           rows={6}
-          defaultValue={product.descriptionEn}
+          defaultValue={product.descriptionEn ?? ""}
           placeholder="Description (English)"
           className="w-full border p-4 rounded-xl"
         />
@@ -99,7 +99,7 @@ export default async function EditProductPage({
         <textarea
           name="descriptionAr"
           rows={6}
-          defaultValue={product.descriptionAr}
+         defaultValue={product.descriptionAr ?? ""}
           placeholder="الوصف (العربية)"
           dir="rtl"
           className="w-full border p-4 rounded-xl"
