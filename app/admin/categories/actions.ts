@@ -24,7 +24,7 @@ export async function createCategory(formData: FormData) {
   await prisma.category.create({
     data: {
       nameEn,
-      nameAr: nameAr || null,
+      nameAr,
     },
   });
 
@@ -61,7 +61,7 @@ export async function updateCategory(
     },
     data: {
       nameEn,
-      nameAr: nameAr || null,
+      nameAr,
     },
   });
 
