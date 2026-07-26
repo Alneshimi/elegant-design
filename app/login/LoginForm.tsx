@@ -8,45 +8,25 @@ export default function LoginForm() {
     useState(false);
 
   async function handleSubmit(
-    e: React.FormEvent<
-      HTMLFormElement
-    >
-  ) {
-    e.preventDefault();
+  e: React.FormEvent<HTMLFormElement>
+) {
+  e.preventDefault();
 
-    setLoading(true);
+  setLoading(true);
 
-    const form =
-      new FormData(
-        e.currentTarget
-      );
+  const form = new FormData(e.currentTarget);
 
-    const email =
-      form.get(
-        "email"
-      ) as string;
+  const email = form.get("email") as string;
+  const password = form.get("password") as string;
 
-    const password =
-      form.get(
-        "password"
-      ) as string;
+  await signIn("credentials", {
+    email,
+    password,
+    callbackUrl: "/admin/dashboard",
+  });
 
-    const result = await signIn("credentials", {
-  email,
-  password,
-  redirect: false,
-});
-
-console.log(result);
-
-   if (result?.ok) {
-  window.location.href = "/admin/dashboard";
-} else {
-  console.log(result);
-  alert(result?.error || "Login failed");
+  setLoading(false);
 }
-    setLoading(false);
-  }
 
   return (
     <form
