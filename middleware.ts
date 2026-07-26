@@ -1,5 +1,6 @@
 import { withAuth } from "next-auth/middleware";
 import createMiddleware from "next-intl/middleware";
+import { NextRequest } from "next/server";
 
 const intlMiddleware = createMiddleware({
   locales: ["en", "ar"],
@@ -8,33 +9,49 @@ const intlMiddleware = createMiddleware({
 });
 
 export default withAuth(
-  function middleware(req) {
+  function middleware(req: NextRequest) {
     const { pathname } = req.nextUrl;
 
-    // Skip login and auth API
-    if (
-      pathname.startsWith("/login") ||
-      pathname.startsWith("/api/auth")
-    ) {
+    // Skip NextAuth API routes
+    if (pathname.startsWith("/api/auth")) {
       return;
     }
 
-    return intlMiddleware(req);
+    // Skip login page
+    if (pathname === "/login") {
+      return;
+    }
+
+    // Apply next-intl only to public localized pages
+    if (
+      pathname.startsWith("/en") ||
+      pathname.startsWith("/ar")
+    ) {
+      return intlMiddleware(req);
+    }
+
+    return;
   },
   {
+    secret: process.env.AUTH_SECRET,
+
     pages: {
       signIn: "/login",
     },
+
     callbacks: {
       authorized: ({ token, req }) => {
-        const isAdmin = req.nextUrl.pathname.startsWith("/admin");
+        const pathname = req.nextUrl.pathname;
 
-        // Only protect /admin
-        if (isAdmin) {
+        // Protect admin pages only
+        if (
+          pathname.startsWith("/admin") ||
+          pathname.startsWith("/en/admin") ||
+          pathname.startsWith("/ar/admin")
+        ) {
           return !!token;
         }
 
-        // Everything else is public
         return true;
       },
     },
@@ -42,5 +59,7 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/((?!_next|.*\\..*).*)"],
+  matcher: [
+    "/((?!api|_next|favicon.ico|.*\\..*).*)",
+  ],
 };
