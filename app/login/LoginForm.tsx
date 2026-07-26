@@ -31,25 +31,20 @@ export default function LoginForm() {
         "password"
       ) as string;
 
-    const result =
-      await signIn(
-        "credentials",
-        {
-          email,
-          password,
-          redirect: false,
-        }
-      );
+    const result = await signIn("credentials", {
+  email,
+  password,
+  redirect: false,
+});
 
-    if (!result?.error) {
-      window.location.href =
-        "/admin/dashboard";
-    } else {
-      alert(
-        "Invalid credentials"
-      );
-    }
+console.log(result);
 
+   if (result?.ok) {
+  window.location.href = "/admin/dashboard";
+} else {
+  console.log(result);
+  alert(result?.error || "Login failed");
+}
     setLoading(false);
   }
 
