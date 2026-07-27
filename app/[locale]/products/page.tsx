@@ -5,15 +5,18 @@ import { getTranslations } from "next-intl/server";
 export default async function ProductsPage() {
   const t = await getTranslations();
 
-  const products = await prisma.product.findMany({
-    include: {
-      category: true,
-      media: true,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+const products = await prisma.product.findMany({
+  where: {
+    isActive: true,
+  },
+  include: {
+    category: true,
+    media: true,
+  },
+  orderBy: {
+    createdAt: "desc",
+  },
+});
 
   return (
     <main className="min-h-screen bg-gray-100 pt-28 pb-16">

@@ -72,9 +72,11 @@ export default async function OrdersPage() {
             {orders.map((order) => {
 
               const productName =
-                order.product.nameEn ||
-                order.product.nameAr ||
-                "Untitled product";
+  order.product?.nameEn ||
+  order.product?.nameAr ||
+  order.productName
+  "Deleted product";
+
 
               return (
 

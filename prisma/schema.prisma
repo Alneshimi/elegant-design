@@ -53,7 +53,7 @@ model Product {
 
   isFeatured Boolean @default(false)
   isActive   Boolean @default(true)
-
+  
   views Int @default(0)
 
   categoryId String
@@ -103,9 +103,10 @@ model Order {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   completedAt DateTime?
-
-  productId String
-  product   Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+productName String?
+productCode String?
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id], onDelete:SetNull)
 
   @@index([status])
   @@index([createdAt])

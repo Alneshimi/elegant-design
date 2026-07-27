@@ -52,27 +52,32 @@ export async function createOrder(
       "quantity"
     ) || 1
   );
-
-  const order =
-    await prisma.order.create({
-      data: {
-        orderNumber:
-          `ED-${Date.now()}`,
-
-        customerName,
-        phone,
-        instagram,
-        email,
-        notes,
-        size,
-        color,
-        quantity,
-        productId,
-      },
-    });
 const product = await prisma.product.findUnique({
   where: {
     id: productId,
+  },
+});
+
+if (!product) {
+  throw new Error("Product not found.");
+}
+ const order = await prisma.order.create({
+  data: {
+    orderNumber: `ED-${Date.now()}`,
+
+    customerName,
+    phone,
+    instagram,
+    email,
+    notes,
+    size,
+    color,
+    quantity,
+
+    productId,
+
+    productName: product.nameEn,
+    productCode: product.code,
   },
 });
 

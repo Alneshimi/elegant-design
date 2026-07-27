@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { deleteProduct } from "./actions";
+import {deleteProduct,toggleProductStatus,} from "./actions";
 
 export default async function ProductsPage() {
   const products = await prisma.product.findMany({
@@ -171,19 +171,37 @@ export default async function ProductsPage() {
   </div>
 ))}
                     </div>
-<form
-  action={deleteProduct.bind(
-    null,
-    product.id
-  )}
->
-  <button
-    type="submit"
-    className="text-red-600"
+<div className="flex gap-4 items-center">
+
+  <form
+    action={toggleProductStatus.bind(
+      null,
+      product.id
+    )}
   >
-    Delete
-  </button>
-</form>
+    <button
+      type="submit"
+      className="text-orange-600 hover:underline"
+    >
+      {product.isActive ? "Hide" : "Show"}
+    </button>
+  </form>
+
+  <form
+    action={deleteProduct.bind(
+      null,
+      product.id
+    )}
+  >
+    <button
+      type="submit"
+      className="text-red-600 hover:underline"
+    >
+      Delete
+    </button>
+  </form>
+
+</div>
                   </td>
 
                 </tr>

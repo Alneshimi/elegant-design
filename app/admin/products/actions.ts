@@ -38,8 +38,40 @@ export async function deleteProduct(id: string) {
     }
   }
 
-  await prisma.product.delete({
-    where: { id },
+ // Remove the product reference from orders
+await prisma.order.updateMany({
+  where: {
+    productId: id,
+  },
+  data: {
+    productId: undefined,
+  },
+});
+
+// Delete the product
+await prisma.product.delete({
+  where: {
+    id,
+  },
+});
+  redirect("/admin/products");
+}
+export async function toggleProductStatus(id: string) {
+  const product = await prisma.product.findUnique({
+    where: {
+      id,
+    },
+  });
+
+  if (!product) return;
+
+  await prisma.product.update({
+    where: {
+      id,
+    },
+    data: {
+      isActive: !product.isActive,
+    },
   });
 
   redirect("/admin/products");
