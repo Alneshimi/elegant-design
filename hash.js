@@ -1,13 +1,8 @@
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
 
 async function run() {
-  const hash =
-    await bcrypt.hash(
-      "admin123",
-      10
-    );
-
+  const hash = await bcrypt.hash("admin123", 10);
   console.log(hash);
 }
 
-run();
+void run();

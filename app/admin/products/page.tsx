@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import {deleteProduct,toggleProductStatus,} from "./actions";
 
@@ -156,9 +157,11 @@ export default async function ProductsPage() {
 {product.media.map((item) => (
   <div key={item.id}>
     {item.type === "IMAGE" ? (
-      <img
+      <Image
         src={item.url}
         alt={productName}
+        width={200}
+        height={120}
         className="rounded-xl"
       />
     ) : (

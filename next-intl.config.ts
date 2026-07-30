@@ -1,4 +1,6 @@
-export default {
+const nextIntlConfig = {
   locales: ["en", "ar"],
-  defaultLocale: "en"
+  defaultLocale: "en",
 };
+
+export default nextIntlConfig;

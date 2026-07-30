@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
 interface Props {
@@ -65,10 +66,12 @@ export default async function ProductPage({
                   className="mb-6"
                 >
                   {media.type === "IMAGE" ? (
-                    <img
+                    <Image
                       src={media.url}
-                      className="rounded-xl w-full"
-                     alt={productName || "Product image"}
+                      alt={productName || "Product image"}
+                      width={800}
+                      height={600}
+                      className="rounded-xl w-full h-auto"
                     />
                   ) : (
                     <video

@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
-import { locales } from "@/i18n";
+import { locales, type Locale } from "@/i18n";
 import LayoutWrapper from "@/components/LayoutWrapper";
 
 export default async function LocaleLayout({
@@ -13,24 +13,25 @@ export default async function LocaleLayout({
   }>;
 }) {
   const { locale } = await params;
+  const normalizedLocale = locale as Locale;
 
-  if (!locales.includes(locale as any)) {
+  if (!locales.includes(normalizedLocale)) {
     notFound();
   }
 
   const messages = (
-    await import(`@/messages/${locale}.json`)
+    await import(`@/messages/${normalizedLocale}.json`)
   ).default;
 
   return (
     <NextIntlClientProvider
-      locale={locale}
+      locale={normalizedLocale}
       messages={messages}
     >
       <div
-        lang={locale}
-        dir={locale === "ar" ? "rtl" : "ltr"}
-        className={locale === "ar" ? "rtl" : "ltr"}
+        lang={normalizedLocale}
+        dir={normalizedLocale === "ar" ? "rtl" : "ltr"}
+        className={normalizedLocale === "ar" ? "rtl" : "ltr"}
       >
         <LayoutWrapper>
           {children}

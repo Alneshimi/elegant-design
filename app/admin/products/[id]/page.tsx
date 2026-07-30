@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import {
   updateProduct,
   deleteProductMedia,
@@ -181,10 +182,12 @@ export default async function EditProductPage({
                 </button>
 
                 {item.type === "IMAGE" ? (
-                  <img
+                  <Image
                     src={item.url}
                     className="rounded-xl w-full h-40 object-cover"
-                    alt={product.nameEn}
+                    alt={product.nameEn || "Product image"}
+                    width={400}
+                    height={300}
                   />
                 ) : (
                   <video

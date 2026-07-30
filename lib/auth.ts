@@ -20,7 +20,7 @@ export const authConfig: NextAuthOptions = {
       },
 
       async authorize(credentials) {
-        if (!credentials) return null;
+        if (!credentials?.email || !credentials.password) return null;
 
         const admin = await prisma.adminUser.findUnique({
           where: {
@@ -30,10 +30,7 @@ export const authConfig: NextAuthOptions = {
 
         if (!admin) return null;
 
-        const valid = await bcrypt.compare(
-          credentials.password,
-          admin.password
-        );
+        const valid = await bcrypt.compare(credentials.password, admin.password);
 
         if (!valid) return null;
 
@@ -65,7 +62,8 @@ export const authConfig: NextAuthOptions = {
 
     async session({ session, token }) {
       if (session.user) {
-        (session.user as any).id = token.id as string;
+        const sessionUser = session.user as typeof session.user & { id?: string };
+        sessionUser.id = typeof token.id === "string" ? token.id : undefined;
       }
 
       return session;
