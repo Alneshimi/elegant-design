@@ -84,7 +84,7 @@ if (!product) {
 try {
   await transporter.sendMail({
     from: process.env.GMAIL_USER,
-    to: "alialneshimi3@gmail.com",
+    to: "alialneshimi3@gmail.com, Asmaajumaa77@gmail.com",
     subject: `New Order ${order.orderNumber}`,
     html: `
       <h2>New Order Received</h2>
