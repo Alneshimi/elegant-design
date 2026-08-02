@@ -2,17 +2,34 @@ import ProductCard from "@/components/ProductCard";
 import { prisma } from "@/lib/prisma";
 import { getTranslations } from "next-intl/server";
 
-export default async function ProductsPage() {
+export default async function ProductsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    category?: string;
+  }>;
+}) {
+
   const t = await getTranslations();
 
+  const { category } = await searchParams;
+  
 const products = await prisma.product.findMany({
   where: {
     isActive: true,
+
+    ...(category
+      ? {
+          categoryId: category,
+        }
+      : {}),
   },
+
   include: {
     category: true,
     media: true,
   },
+
   orderBy: {
     createdAt: "desc",
   },
